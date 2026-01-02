@@ -8,6 +8,10 @@ function App() {
       <SignUpcard />
     </div>
   );
+    <>
+    <SignIn />
+    </>
+  )
 }
 
 export default App;
