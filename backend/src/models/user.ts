@@ -1,40 +1,24 @@
-import { Schema, model, models, InferSchemaType } from "mongoose";
+import mongoose, { Document, Schema } from 'mongoose';
 
-const userSchema = new Schema(
-  {
-    // handles mongodb schema and type validation
+export interface IUser extends Document {
+  username: string;
+  email: string;
+  password: string;
+  avatarUrl?: string;
+  bio?: string;
+  createdAt: Date;
+  isDeleted?: boolean;
+}
 
-    // unique user handle
-    user_handle: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      lowercase: true,
-    },
+const UserSchema: Schema = new Schema<IUser>({
+  username: { type: String, required: true, unique: true },
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  avatarUrl: { type: String },
+  bio: { type: String },
+  createdAt: { type: Date, default: Date.now },
+  isDeleted: { type: Boolean, default: false },
+});
 
-    // Real name of the user
-    username: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      lowercase: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
+export default mongoose.model<IUser>('User', UserSchema);
 
-export type User = InferSchemaType<typeof userSchema>;
-export const UserModel = models.User || model("User", userSchema);
