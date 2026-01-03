@@ -27,7 +27,7 @@ app.use(express.json());
 
 connectDB();
 
-app.get("/", (res: Response) => {
+app.get("/", (req:Request,res: Response) => {
   res.json({ message: "Backend Server is running", success: true });
 });
 

@@ -1,0 +1,27 @@
+/* landing.module.css
+  Styles for the landing page background and section spacing.
+  The `.landingBg` wrapper provides radial visual effects and should size
+  to its children (no forced large min-height) so the footer remains
+  positioned after the landing content.
+*/
+.landingBg {
+  /* let the container size itself to its content */
+  background-color: #000;
+  padding: 40px 0 24px 0;
+
+  background-image:
+    radial-gradient(1400px 1000px at -250px -40px, rgba(0, 26, 255, 0.30), transparent 70%),
+    radial-gradient(1400px 1000px at calc(100% + 400px) 580px, rgba(0, 26, 255, 0.30), transparent 70%),
+    radial-gradient(1400px 1000px at -250px 1220px, rgba(0, 26, 255, 0.30), transparent 70%),
+    radial-gradient(1400px 1000px at calc(100% + 400px) 2020px, rgba(0, 26, 255, 0.30), transparent 70%),
+    radial-gradient(1400px 1000px at -250px 2800px, rgba(0, 26, 255, 0.30), transparent 70%);
+
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.section {
+  padding: 120px 100px;
+}
+
+
