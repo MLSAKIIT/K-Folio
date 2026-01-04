@@ -6,7 +6,6 @@ node_modules/
 .env.local
 
 # Build output
-package-lock.json
 pnpm-lock.yaml
 dist/
 
