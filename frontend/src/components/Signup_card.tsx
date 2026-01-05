@@ -28,8 +28,9 @@ const SignUpCard: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-black flex items-center">
+    <div  className="relative min-h-screen w-full bg-black flex items-center">
       <div className="relative z-10 w-95 ml-20 rounded-2xl bg-[#524C90]/30 backdrop-blur-xl p-8 text-white">
+
         {/* Shine Border */}
         <ShineBorder shineColor={["#2F5BFF", "white"]} />
 
@@ -44,7 +45,9 @@ const SignUpCard: React.FC = () => {
         </div>
 
         {/* Header */}
-        <h2 className="text-2xl font-semibold">Create Your Account</h2>
+        <h2 className="text-2xl font-semibold">
+          Create Your Account
+        </h2>
         <p className="text-gray-400 text-sm mt-1">
           Join the community and start sharing today.
         </p>
