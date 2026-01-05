@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import User from '../models/User';
+import User from '../models/user';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'devsecret';
 
