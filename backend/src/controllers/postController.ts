@@ -1,26 +1,19 @@
-
 import { Request, Response } from "express";
 import { Post } from "../models/post";
-import { UserModel } from "../models/user";
+import User from "../models/user";
 import { CreatePostInput } from "../validators/postSchema";
 
 export const createPost = async (req: Request, res: Response) => {
   try {
-    const userHandle = req.user?.user_handle;
-    if (!userHandle) {
+    if (!req.userId) {
       return res.status(401).json({ message: "Unauthorized" });
     }
 
     const { title, description, tags = [], media = [] } =
       req.body as CreatePostInput;
 
-    const user = await UserModel.findOne({ user_handle: userHandle }).select("_id");
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
     const post = await Post.create({
-      userId: user._id,
+      userId: req.userId,
       title,
       description,
       tags,
@@ -35,7 +28,6 @@ export const createPost = async (req: Request, res: Response) => {
       data: post,
     });
   } catch (error) {
-    console.error("Create post error:", error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
