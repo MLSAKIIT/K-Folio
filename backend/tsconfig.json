@@ -9,12 +9,5 @@
     "skipLibCheck": true,
     "moduleResolution": "node"
   },
-<<<<<<< HEAD
-  "include": ["src/**/*.ts", "src/**/*.d.ts"],
-
-  "exclude": ["node_modules", "dist"]
-} 
-=======
   "include": ["src"]
 }
->>>>>>> 6a0f76b656fc8c09e1087ed2565299de89bd1aee
