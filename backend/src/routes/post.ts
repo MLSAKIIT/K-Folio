@@ -5,4 +5,5 @@ import { createPostSchema } from "../validators/postSchema";
 
 const router = Router();
 router.post("/", authMiddleware, createPost);
+router.post("/like",authMiddleware,)
 export default router;
