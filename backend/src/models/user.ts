@@ -17,7 +17,10 @@ const UserSchema: Schema = new Schema<IUser>({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   avatarUrl: { type: String },
-  bio: { type: String },
+  bio: { 
+    type: String,
+
+   },
   createdAt: { type: Date, default: Date.now },
   isDeleted: { type: Boolean, default: false },
    followerCount: {type: Number, default: 0,},

@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
 import User from '../models/user';
-import { AuthRequest } from '../middleware/auth';
 
-export const getProfile = async (req: AuthRequest, res: Response) => {
+export const getProfile = async (req: Request & { userId?: string }, res: Response) => {
   try {
     const user = await User.findById(req.userId).select('-password');
     if (!user) return res.status(404).json({ message: 'User not found' });
@@ -12,7 +11,7 @@ export const getProfile = async (req: AuthRequest, res: Response) => {
   }
 };
 
-export const updateProfile = async (req: AuthRequest, res: Response) => {
+export const updateProfile = async (req: Request & { userId?: string }, res: Response) => {
   try {
     const update: Partial<{ bio: string; avatarUrl: string }>
       = { ...req.body };
@@ -28,7 +27,7 @@ export const updateProfile = async (req: AuthRequest, res: Response) => {
   }
 };
 
-export const deleteProfile = async (req: AuthRequest, res: Response) => {
+export const deleteProfile = async (req: Request & { userId?: string }, res: Response) => {
   try {
     const user = await User.findByIdAndUpdate(
       req.userId,

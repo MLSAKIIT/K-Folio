@@ -1,24 +1,28 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import authRoutes from './routes/auth';
-import userRoutes from './routes/user';
-import { json, urlencoded } from 'express';
-import cors from 'cors';
+import express, { Request, Response } from "express";
+import cors from "cors";
 
-dotenv.config();
+import authRouter from "./routes/auth";
+import postRouter from "./routes/post";
+
+import userRouter from "./routes/user";
 
 const app = express();
 
+// middleware
 app.use(cors());
-app.use(json());
-app.use(urlencoded({ extended: false }));
+app.use(express.json());
 
-app.use('/api/auth', authRoutes);
-app.use('/api/user', userRoutes);
+// health check
+app.get("/", (req: Request, res: Response) => {
+  res.status(200).json({
+    message: "Backend Server is running",
+    success: true,
+  });
+});
 
-// Basic health check
-app.get('/', (req, res) => res.send('API running'));
+// routes
+app.use("/auth", authRouter);
+app.use("/posts", postRouter);
+app.use("/users", userRouter);
 
 export default app;
-
