@@ -56,6 +56,7 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
   return (
     <div className="relative min-h-screen w-full bg-black flex items-center">
 
+      {/* LOGIN CARD */}
       <div className="relative z-10 w-95 ml-20 rounded-2xl bg-[#524C90]/30 backdrop-blur-xl p-8 text-white">
         <ShineBorder shineColor={["#2F5BFF", "white"]} />
 
@@ -126,6 +127,7 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
           </button>
         </form>
         <div className="mt-6 flex items-center gap-3">
+          {/* Left line */}
           <div className="flex-1">
             <svg
               className="w-full"
@@ -145,10 +147,12 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
             </svg>
           </div>
 
+          {/* Text */}
           <span className="text-sm text-gray-400 whitespace-nowrap">
             Or continue with
           </span>
 
+          {/* Right line */}
           <div className="flex-1">
             <svg
               className="w-full"
@@ -170,7 +174,9 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
         </div>
 
 
+        {/* SOCIAL BUTTONS */}
         <div className="mt-4 flex gap-3">
+          {/* GOOGLE */}
           <button className="flex flex-1 items-center justify-center gap-2 rounded-md bg-black/40 border border-white/20 py-2 text-sm transition hover:-translate-y-px hover:border-[#2F5BFF] hover:shadow-[0_0_16px_rgba(47,91,255,0.5)]">
             <svg
               width="14"
@@ -187,6 +193,7 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
             <span>Google</span>
           </button>
 
+          {/* FACEBOOK */}
           <button className="flex flex-1 items-center justify-center gap-2 rounded-md bg-black/40 border border-white/20 py-2 text-sm transition hover:-translate-y-px hover:border-[#2F5BFF] hover:shadow-[0_0_16px_rgba(47,91,255,0.5)]">
             <svg
               width="14"
