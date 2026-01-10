@@ -234,13 +234,8 @@ export default function Hero() {
           }
         }
         `}
-<<<<<<< HEAD
-        </style>
-
-=======
         
       </style>
->>>>>>> 6911f8b71c87cd2d5a3c24646e6b47c3d75f7e7c
 
       <section
         data-section="hero"

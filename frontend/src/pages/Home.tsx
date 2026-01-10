@@ -1,4 +1,4 @@
-import LandingBackground from "@/components/Landing Page/LandingBackground";
+import LandingBackground from "@/components/Landing/LandingBackground";
 import PostSection from "@/components/Post/PostSection";
 
 const Home = () => {

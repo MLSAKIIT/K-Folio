@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route} from "react-router-dom";
 
 import Background from "./pages/Landing/Background";
 import LandingPage from "./pages/Landing/LandingPage";
@@ -15,20 +15,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* NAVBAR (unchanged, only button added) */}
-      <nav style={{ padding: 12, display: "flex", gap: 12 }}>
-        <Link to="/">Home</Link>
-        <Link to="/signin">Sign In</Link>
-
-        {/* TEMP Create Post Button */}
-        <button
-          onClick={() => setIsCreatePostOpen(true)}
-          style={{ marginLeft: "auto" }}
-        >
-          Create Post
-        </button>
-      </nav>
-
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Background />} />
