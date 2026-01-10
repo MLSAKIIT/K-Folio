@@ -18,9 +18,10 @@ function App() {
 
       <Routes>
         {/* Landing Page */}
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/landing" element={<LandingPage />} />
         <Route path="/signin" element={<Background />} />
         {/* Profile Page */}
+        <Route path="/" element={<ProfilePage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>

@@ -1,5 +1,11 @@
 import dotenv from "dotenv";
-dotenv.config();
+import path from "path";
+console.log("Current working directory:", process.cwd());
+const result = dotenv.config();
+if (result.error) {
+  console.error("Dotenv config error:", result.error);
+}
+console.log("Environment variables loaded:", result.parsed ? Object.keys(result.parsed) : "None");
 import app from "./app";
 import { connectDB } from "./config/db";
 
