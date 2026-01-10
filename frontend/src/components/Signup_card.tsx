@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { ShineBorder } from "./ui/shine-border";
 
-const SignUpCard: React.FC = () => {
+type SignInProps = {
+  onSwitch: () => void;
+};
+
+const SignUpCard: React.FC<SignInProps> = ({ onSwitch }) => {
   const [fullName, setFullName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -9,8 +13,9 @@ const SignUpCard: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!fullName || !username || !email || !password || !confirmPassword) {
@@ -24,7 +29,34 @@ const SignUpCard: React.FC = () => {
     }
 
     setError("");
-    console.log({ fullName, username, email, password, confirmPassword });
+    setLoading(true);
+
+    try {
+      const response = await fetch("http://localhost:5000/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Registration failed");
+      }
+
+      alert("Account created successfully! Please log in.");
+      onSwitch();
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -140,9 +172,10 @@ const SignUpCard: React.FC = () => {
           {/* Submit */}
           <button
             type="submit"
-            className="w-full mt-2 bg-[#2F5BFF] transition cursor-pointer hover:-translate-y-px rounded-md py-2 font-medium"
+            disabled={loading}
+            className="mt-2 w-full rounded-md bg-[#2F5BFF] py-2 font-medium transition hover:-translate-y-px disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Create Account
+            {loading ? "Creating Account..." : "Create Account"}
           </button>
         </form>
       </div>

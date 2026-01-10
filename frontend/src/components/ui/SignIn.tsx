@@ -10,8 +10,9 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!email.trim() || !password.trim()) {
@@ -20,7 +21,36 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
     }
 
     setError("");
-    console.log({ email, password });
+    setLoading(true);
+
+    try {
+      const response = await fetch("http://localhost:5000/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Login failed");
+      }
+
+      localStorage.setItem("token", data.token);
+      
+      console.log("Logged in successfully, token:", data.token);
+      alert("Login Successful!"); 
+
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -52,12 +82,12 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
           )}
 
           <div>
-            <label className="text-sm text-gray-300">Username or Email</label>
+            <label className="text-sm text-gray-300">Email Address</label>
             <input
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder=""
+              placeholder="example@address.com"
               className="mt-1 w-full rounded-md bg-black/40 border border-white/20 px-3 py-2 outline-none focus:border-[#2F5BFF]"
             />
           </div>
@@ -90,9 +120,10 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
 
           <button
             type="submit"
-            className="w-full mt-2 bg-[#2F5BFF] transition cursor-pointer hover:-translate-y-px rounded-md py-2 font-medium"
+            disabled={loading}
+            className="w-full mt-2 bg-[#2F5BFF] transition cursor-pointer hover:-translate-y-px rounded-md py-2 font-medium disabled:opacity-50"
           >
-            Log In
+            {loading ? "Logging in..." : "Log In"}
           </button>
         </form>
         <div className="mt-6 flex items-center gap-3">
