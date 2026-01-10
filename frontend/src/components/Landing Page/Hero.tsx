@@ -168,9 +168,79 @@ export default function Hero() {
             font-size: 14px;
           }
         }
+          /* =====================
+           🔥 RESPONSIVE DESIGN
+           ===================== */
+
+        /* Tablet (768px - 1199px) */
+        @media (max-width: 1199px) {
+          .hero-section {
+            grid-template-columns: 1fr !important;
+            padding: 60px 40px !important;
+            gap: 40px !important;
+          }
+
+          .hero-content {
+            max-width: 100% !important;
+            text-align: center;
+          }
+
+          .hero-heading {
+            font-size: 42px !important;
+          }
+
+          .hero-video-wrapper {
+            width: 100% !important;
+            max-width: 500px !important;
+            height: 300px !important;
+            margin: 0 auto;
+          }
+        }
+
+        /* Mobile (max-width: 767px) */
+        @media (max-width: 767px) {
+          .hero-section {
+            min-height: auto !important;
+            padding: 40px 20px !important;
+          }
+
+          .hero-heading {
+            font-size: 32px !important;
+          }
+
+          .hero-paragraph {
+            font-size: 16px !important;
+            margin-bottom: 28px !important;
+          }
+
+          .hero-video-wrapper {
+            max-width: 100% !important;
+            height: 250px !important;
+          }
+        }
+
+        /* Extra Small (max-width: 480px) */
+        @media (max-width: 480px) {
+          .hero-heading {
+            font-size: 28px !important;
+          }
+
+          .hero-paragraph {
+            font-size: 15px !important;
+          }
+
+          .hero-video-wrapper {
+            height: 200px !important;
+          }
+        }
         `}
+<<<<<<< HEAD
         </style>
 
+=======
+        
+      </style>
+>>>>>>> 6911f8b71c87cd2d5a3c24646e6b47c3d75f7e7c
 
       <section
         data-section="hero"

@@ -1,0 +1,467 @@
+/* Import Montserrat font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
+
+/* SHARED */
+.section-title {
+  color: white;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 60px;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+/* =================== FRAMES SECTION =================== */
+.frames-section {
+  padding: 80px 0;
+  background: transparent; /* Use common background */
+  overflow: hidden;
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+}
+
+.frames-track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: scroll-infinite 20s linear infinite;
+}
+
+@keyframes scroll-infinite {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% / 2));
+  }
+}
+
+.frames-content {
+  display: inline-flex;
+  gap: 60px;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.hashtag-inline {
+  color: white;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease, font-weight 0.3s ease;
+  cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.hashtag-inline:hover {
+  transform: scale(1.1);
+  color: #a78bfa;
+  font-weight: 800 !important;
+}
+
+/* Outline style for specific hashtags */
+.hashtag-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px white;
+  text-stroke: 1.5px white;
+}
+
+.hashtag-outline:hover {
+  -webkit-text-stroke: 1.5px #a78bfa;
+  text-stroke: 1.5px #a78bfa;
+}
+
+/* Underline for #AfterHours */
+.hashtag-underline {
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1.5px;
+}
+/* =================== FEATURES SECTION =================== */
+.features-section {
+  padding: 100px 60px;
+  background: transparent; /* Use common background */
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.features-heading {
+  color: white;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 70px;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.feature-card {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-radius: 24px;
+  padding: 40px 24px;
+  color: white;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 280px;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(148, 163, 184, 0.3), 
+    transparent);
+}
+
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 48px rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+.feature-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 24px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon-wrapper {
+  transform: scale(1.1) rotateZ(5deg);
+}
+
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.feature-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: white;
+  line-height: 1.3;
+}
+
+.feature-card p {
+  font-size: 15px;
+  opacity: 0.7;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.6);
+}
+
+/* =================== TESTIMONIALS SECTION =================== */
+.testimonials-section {
+  padding: 100px 60px;
+  background: transparent; /* Use common background */
+  text-align: center;
+}
+
+.testimonials-section .section-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 70px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-radius: 24px;
+  padding: 40px 32px;
+  color: white;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  text-align: left;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(148, 163, 184, 0.3), 
+    transparent);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 48px rgba(236, 72, 153, 0.15);
+  border-color: rgba(236, 72, 153, 0.2);
+}
+
+.quote-icon {
+  font-size: 56px;
+  line-height: 1;
+  color: rgba(148, 163, 184, 0.25);
+  margin-bottom: 16px;
+  font-family: Georgia, serif;
+  font-weight: 700;
+}
+
+.testimonial-text {
+  font-size: 17px;
+  margin: 0 0 28px;
+  color: #e2e8f0;
+  line-height: 1.7;
+  font-weight: 400;
+}
+
+.author {
+  padding-top: 24px;
+  border-top: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.author-name {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.author-uni {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(148, 163, 184, 0.7);
+}
+
+/* =================== RESPONSIVE DESIGN =================== */
+
+/* Large Desktop (1200px+) - Default styles above */
+
+/* Tablet & Small Desktop (768px - 1199px) */
+@media (max-width: 1199px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  
+  .features-section,
+  .testimonials-section {
+    padding: 80px 40px;
+  }
+}
+
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) {
+  .section-title,
+  .features-heading,
+  .testimonials-section .section-title {
+    font-size: 40px;
+    margin-bottom: 50px;
+  }
+  
+  .features-section,
+  .testimonials-section {
+    padding: 70px 30px;
+  }
+  
+  .frames-section {
+    padding: 60px 0;
+  }
+}
+
+/* Mobile & Small Tablet (max-width: 767px) */
+@media (max-width: 767px) {
+  /* Section titles */
+  .section-title,
+  .features-heading,
+  .testimonials-section .section-title {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+  
+  /* Frames section */
+  .frames-section {
+    padding: 50px 0;
+  }
+  
+  .frames-content {
+    gap: 40px;
+    padding: 0 20px;
+  }
+  
+  .hashtag-inline {
+    font-size: 20px !important;
+  }
+  
+  /* Features section */
+  .features-section {
+    padding: 60px 20px;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .feature-card {
+    padding: 32px 20px;
+  }
+  
+  .feature-card h3 {
+    font-size: 18px;
+  }
+  
+  .feature-card p {
+    font-size: 14px;
+  }
+  
+  /* Testimonials section */
+  .testimonials-section {
+    padding: 60px 20px;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .testimonial-card {
+    padding: 32px 24px;
+  }
+  
+  .testimonial-text {
+    font-size: 15px;
+  }
+  
+  .quote-icon {
+    font-size: 48px;
+  }
+}
+
+/* Extra Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .section-title,
+  .features-heading,
+  .testimonials-section .section-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .frames-section {
+    padding: 40px 0;
+  }
+  
+  .frames-content {
+    gap: 30px;
+    padding: 0 15px;
+  }
+  
+  .hashtag-inline {
+    font-size: 16px !important;
+  }
+  
+  .features-section,
+  .testimonials-section {
+    padding: 50px 15px;
+  }
+  
+  .feature-card,
+  .testimonial-card {
+    padding: 28px 20px;
+  }
+  
+  .feature-card h3 {
+    font-size: 16px;
+  }
+  
+  .feature-card p {
+    font-size: 13px;
+  }
+  
+  .testimonial-text {
+    font-size: 14px;
+  }
+  
+  .author-name {
+    font-size: 15px;
+  }
+  
+  .author-uni {
+    font-size: 13px;
+  }
+}
+
+/* Extra extra small (max-width: 374px) */
+@media (max-width: 374px) {
+  .section-title,
+  .features-heading,
+  .testimonials-section .section-title {
+    font-size: 24px;
+  }
+  
+  .hashtag-inline {
+    font-size: 14px !important;
+  }
+  
+  .frames-content {
+    gap: 25px;
+  }
+}
+
+/* Ensure responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Box sizing for all elements */
+* {
+  box-sizing: border-box;
+}

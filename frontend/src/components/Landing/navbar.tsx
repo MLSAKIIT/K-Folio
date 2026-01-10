@@ -3,38 +3,42 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <>
-      {/* FIXED wrapper */}
-      <div className="w-full flex justify-center pt-4 fixed top-0 left-0 z-50">
+      {/* Sticky container */}
+      <div className="fixed top-0 left-0 w-full flex justify-center z-50 pt-4">
         <nav
           className="
             w-[90%] max-w-6xl
             flex items-center justify-between
             px-6 py-3
             rounded-full
-            bg-[rgb(6,10,30)]
-            border border-[rgba(59,130,246,0.6)]
-            shadow-[0_0_20px_rgba(59,130,246,0.25)]
           "
           style={{
+            /* ✅ Proper glassmorphism */
+            backdropFilter: "blur(10px) saturate(140%)",
+            WebkitBackdropFilter: "blur(10px) saturate(140%)",
+
+            background: `
+              linear-gradient(
+                180deg,
+                rgba(20,30,80,0.65),
+                rgba(10,15,45,0.55)
+              )
+            `,
+
+            border: "1px solid rgba(120,160,255,0.25)",
+
+            boxShadow: `
+              0 8px 30px rgba(0,0,0,0.35),
+              inset 0 1px 0 rgba(255,255,255,0.15)
+            `,
+
             animation:
               "fadeDown 0.6s ease-out, navFloat 6s ease-in-out infinite",
           }}
         >
           {/* Logo */}
-          <Link to="/" className="relative text-white font-semibold text-lg">
+          <Link to="/" className="text-white font-semibold text-lg">
             K-Folio
-            <span
-              style={{
-                position: "absolute",
-                inset: "-6px",
-                borderRadius: "999px",
-                background:
-                  "radial-gradient(circle, rgba(59,130,246,0.35), transparent 70%)",
-                filter: "blur(8px)",
-                zIndex: -1,
-                animation: "logoPulse 4s ease-in-out infinite",
-              }}
-            />
           </Link>
 
           {/* Links */}
@@ -54,17 +58,20 @@ const Navbar = () => {
 
           {/* Actions */}
           <div className="flex items-center gap-4 text-sm">
-            <Link to="/signin" className="text-gray-300 hover:text-white">
+            <Link
+              to="/signin"
+              className="text-gray-300 hover:text-white transition-colors"
+            >
               Log in
             </Link>
 
-            {/* Join Now — CORRECT glowing border */}
+            {/* 🔥 Join Now button (same logic as Hero / WhyKfolio) */}
             <Link to="/signin">
               <button
                 style={{
                   position: "relative",
                   display: "inline-flex",
-                  height: "40px",
+                  height: "38px",
                   padding: "1px",
                   borderRadius: "999px",
                   overflow: "hidden",
@@ -73,19 +80,18 @@ const Navbar = () => {
                   cursor: "pointer",
                 }}
               >
-                {/* Rotating border (NO blob bug) */}
+                {/* Animated glowing border */}
                 <span
                   style={{
                     position: "absolute",
-                    inset: "-35%",
+                    inset: "-1000%",
                     background:
-                      "conic-gradient(from 90deg, #E2CBFF, #393BB2, #E2CBFF)",
+                      "conic-gradient(from 90deg at 50% 50%, #E2CBFF 0%, #5b7cff 50%, #E2CBFF 100%)",
                     animation: "spin 2.2s linear infinite",
-                    filter: "blur(1.5px)",
                   }}
                 />
 
-                {/* Inner */}
+                {/* Inner button */}
                 <span
                   style={{
                     position: "relative",
@@ -96,7 +102,7 @@ const Navbar = () => {
                     height: "100%",
                     padding: "0 18px",
                     borderRadius: "999px",
-                    background: "#01071f",
+                    background: "#030b2d",
                     color: "white",
                     fontSize: "13px",
                     fontWeight: 500,
@@ -125,11 +131,6 @@ const Navbar = () => {
         @keyframes fadeDown {
           from { opacity: 0; transform: translateY(-12px); }
           to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes logoPulse {
-          0%,100% { opacity: 0.6; }
-          50% { opacity: 1; }
         }
       `}</style>
     </>
