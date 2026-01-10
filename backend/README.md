@@ -110,6 +110,9 @@ backend/
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/` | Welcome message |
+| POST | `/auth/login` | Obtain JWT (use in `Authorization: Bearer <token>`) |
+| POST | `/posts/create` | Create post (requires auth) |
+| GET | `/posts` | List posts (no auth) |
 
 
 ## Development Workflow

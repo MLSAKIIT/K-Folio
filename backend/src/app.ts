@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 
 import authRouter from "./routes/auth";
-import postRouter from "./routes/post";
+import postRouter from "./routes/postaction";
 
 import userRouter from "./routes/user";
 

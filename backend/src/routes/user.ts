@@ -3,9 +3,9 @@ import { Router } from 'express';
 // import { getProfile, updateProfile, deleteProfile } from '../controllers/userController';
 import { getProfile, updateProfile, deleteProfile, blockUser, unblockUser } from '../controllers/userController';
 import { authMiddleware } from '../middleware/auth';
-import {updateBio} from '../controllers/editbioController'
-import {updateUsername} from '../controllers/editusernameController'
-import { updateAvatar } from '../controllers/editavatarcontroller';
+import { updateBio } from '../controllers/editprofileController'
+import {updateUsername} from '../controllers/editprofileController'
+import { updateAvatar } from '../controllers/editprofileController';
 
 
 const router = Router();
