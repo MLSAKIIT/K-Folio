@@ -68,7 +68,7 @@ const SignUpCard: React.FC<SignInProps> = ({ onSwitch }) => {
 
         {/* Tabs */}
         <div className="mb-6 flex p-1 bg-[#11101E] rounded-md text-xs font-medium">
-          <button className="flex-1 py-2 rounded-md text-sm text-gray-400 transition hover:-translate-y-px">
+          <button type="button" onClick={onSwitch} className="flex-1 py-2 rounded-md text-sm text-gray-400 transition hover:-translate-y-px">
             Log In
           </button>
           <button className="flex-1 py-2 rounded-md bg-[#2F5BFF] text-sm font-medium transition hover:-translate-y-px">

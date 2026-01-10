@@ -24,7 +24,7 @@ const MainContent: React.FC = () => {
         <div className="my-7 text-white/60 text-lg">
             <p>
               Join the K-Folio community to share your
-              college  <br/>experiences and connect with 
+              college experiences and connect with 
               students across campus.
             </p>
         </div>

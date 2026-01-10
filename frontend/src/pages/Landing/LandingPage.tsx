@@ -1,6 +1,6 @@
 import "../../components/Landing Page/landing.css";
 import { useEffect, useState } from "react";
-import Footer from "../../components/Landing Page/Footer";
+import Footer from "../../components/Landing/Footer";
 import Hero from "../../components/Landing Page/Hero";
 import LandingBackground from "../../components/Landing/LandingBackground";
 import WhyKfolio from "../../components/Landing Page/whyKfolio";

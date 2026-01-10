@@ -64,7 +64,7 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
           <button className="flex-1 py-2 rounded-md bg-[#2F5BFF] text-sm font-medium transition hover:-translate-y-px">
             Log In
           </button>
-          <button className="flex-1 py-2 rounded-md text-sm text-gray-400 transition hover:-translate-y-px" onClick={onSwitch}>
+          <button type="button" onClick={onSwitch} className="flex-1 py-2 rounded-md text-sm text-gray-400 transition hover:-translate-y-px">
             Sign Up
           </button>
         </div>
