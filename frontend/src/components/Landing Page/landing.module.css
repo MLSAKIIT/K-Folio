@@ -11,8 +11,8 @@
 
   background-image:
     radial-gradient(1400px 1000px at -250px -40px, rgba(0, 26, 255, 0.30), transparent 70%),
-    radial-gradient(1400px 1000px at calc(100% + 400px) 580px, rgba(0, 26, 255, 0.30), transparent 70%),
-    radial-gradient(1400px 1000px at -250px 1220px, rgba(0, 26, 255, 0.30), transparent 70%),
+    radial-gradient(1400px 1000px at calc(100% + 400px) 800px, rgba(0, 26, 255, 0.30), transparent 70%),
+    radial-gradient(1400px 1000px at -250px 1300px, rgba(0, 26, 255, 0.30), transparent 70%),
     radial-gradient(1400px 1000px at calc(100% + 400px) 2020px, rgba(0, 26, 255, 0.30), transparent 70%),
     radial-gradient(1400px 1000px at -250px 2800px, rgba(0, 26, 255, 0.30), transparent 70%);
 

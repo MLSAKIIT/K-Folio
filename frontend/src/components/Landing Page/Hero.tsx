@@ -8,8 +8,8 @@ export default function Hero() {
         }
 
         /* =====================
-           BASE FADE + LIFE
-           ===================== */
+          BASE FADE + LIFE
+          ===================== */
         .hero-animate {
           opacity: 0;
           transform: translateY(14px);
@@ -21,33 +21,23 @@ export default function Hero() {
         .hero-line-1 { animation-delay: 0.12s; }
         .hero-line-2 { animation-delay: 0.24s; }
         .hero-glow   { animation-delay: 0.36s; }
-
         .hero-paragraph { animation-delay: 0.5s; }
         .hero-cta { animation-delay: 0.65s; }
 
         @keyframes heroFadeUp {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Gentle breathing motion */
         @keyframes heroFloat {
           0%,100% { transform: translateY(0); }
           50% { transform: translateY(-3px); }
         }
 
         /* =====================
-           SHIMMER TEXT (LIVELY)
-           ===================== */
+          SHIMMER TEXT
+          ===================== */
         .hero-shimmer {
-          background: linear-gradient(
-            90deg,
-            #3f56c8,
-            #6b82ff,
-            #3f56c8
-          );
+          background: linear-gradient(90deg, #3f56c8, #6b82ff, #3f56c8);
           background-size: 200% 100%;
           -webkit-background-clip: text;
           background-clip: text;
@@ -79,8 +69,8 @@ export default function Hero() {
         }
 
         /* =====================
-           BUTTON
-           ===================== */
+          BUTTON
+          ===================== */
         @keyframes spin {
           to { transform: rotate(360deg); }
         }
@@ -95,47 +85,92 @@ export default function Hero() {
         }
 
         /* =====================
-           VIDEO
-           ===================== */
+          VIDEO
+          ===================== */
         .hero-video-wrapper {
           width: 600px;
           height: 350px;
           display: flex;
           align-items: center;
           justify-content: center;
-
           animation: videoFloat 8s ease-in-out infinite;
         }
 
         @keyframes videoFloat {
-          0%,100% {
-            transform: translateY(0) scale(1);
-          }
-          50% {
-            transform: translateY(-6px) scale(1.015);
-          }
+          0%,100% { transform: translateY(0) scale(1); }
+          50% { transform: translateY(-6px) scale(1.015); }
         }
 
         .hero-video {
           width: 100%;
           height: 100%;
           object-fit: contain;
+          mask-image: radial-gradient(ellipse at center, black 55%, transparent 75%);
+          -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 75%);
+        }
 
-          mask-image: radial-gradient(
-            ellipse at center,
-            black 55%,
-            transparent 75%
-          );
-          -webkit-mask-image: radial-gradient(
-            ellipse at center,
-            black 55%,
-            transparent 75%
-          );
+        /* =====================
+          RESPONSIVE BREAKPOINTS
+          ===================== */
 
-          filter: drop-shadow(0 20px 60px rgba(59,130,246,0.25));
+        /* Tablets */
+        @media (max-width: 1024px) {
+          section[data-section="hero"] {
+            grid-template-columns: 1fr;
+            padding: 40px 30px;
+            text-align: center;
+          }
+
+          section[data-section="hero"] h1,
+          section[data-section="hero"] p,
+          section[data-section="hero"] button {
+            margin-left: 0 !important;
+          }
+
+          .hero-video-wrapper {
+            width: 520px;
+            height: 300px;
+            margin: 40px auto 0;
+          }
+
+          h1 {
+            font-size: 42px !important;
+          }
+
+          p {
+            font-size: 18px !important;
+          }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+          section[data-section="hero"] {
+            padding: 32px 20px;
+          }
+
+          h1 {
+            font-size: 32px !important;
+            line-height: 1.25 !important;
+          }
+
+          p {
+            font-size: 16px !important;
+            margin: 24px 0 !important;
+          }
+
+          .hero-video-wrapper {
+            width: 100%;
+            height: 220px;
+          }
+
+          .hero-button-inner {
+            height: 44px;
+            font-size: 14px;
+          }
         }
         `}
-      </style>
+        </style>
+
 
       <section
         data-section="hero"
@@ -150,13 +185,9 @@ export default function Hero() {
       >
         {/* LEFT */}
         <div style={{ maxWidth: "520px" }}>
-          <h1 style={{ fontSize: "50px", fontWeight: 600, lineHeight: 1.15 }}>
+          <h1 style={{ fontSize: "50px", fontWeight: 600, lineHeight: 1.15, marginLeft: "50px" }}>
             <span className="hero-animate hero-line-1">
-              See what’s happening
-            </span>
-            <br />
-            <span className="hero-animate hero-line-2">
-              on campus–from
+              See what’s happening on campus–from
             </span>
             <br />
             <span className="hero-animate hero-glow hero-shimmer">
@@ -170,13 +201,15 @@ export default function Hero() {
               fontSize: "20px",
               color: "rgba(255,255,255,0.75)",
               marginBottom: "36px",
+              marginTop: "36px",
+              marginLeft: "50px"
             }}
           >
             A social platform for students to share their experiences,
             stories, and moments from campus life.
           </p>
 
-          <button className="hero-animate hero-cta" style={{ position: "relative", padding: "1px", borderRadius: "999px", border: "none", background: "transparent", overflow: "hidden" }}>
+          <button className="hero-animate hero-cta" style={{ position: "relative", padding: "1px", borderRadius: "999px", border: "none", background: "transparent", overflow: "hidden", marginLeft: "50px"}}>
             <span
               style={{
                 position: "absolute",

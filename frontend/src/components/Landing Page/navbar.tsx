@@ -40,7 +40,7 @@ const Navbar = () => {
           {/* Links */}
           <ul className="hidden md:flex gap-8 text-sm text-gray-300">
             <li>
-              <Link to="/" className="hover:text-white transition-colors">
+              <Link to="/home" className="hover:text-white transition-colors">
                 Home
               </Link>
             </li>

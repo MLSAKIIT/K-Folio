@@ -2,10 +2,6 @@ interface Props {
   activeSection?: string;
 }
 
-// Footer
-// Site footer for the landing page. Uses inline style objects so styles are
-// colocated with markup; receives `activeSection` purely for display (and
-// previously for theming). Keep visual logic here small so it stays portable.
 export default function Footer({ activeSection }: Props) {
   const footerStyle: React.CSSProperties = {
     display: "grid",
@@ -51,43 +47,74 @@ export default function Footer({ activeSection }: Props) {
   };
 
   return (
-    <footer style={footerStyle} data-active={activeSection ?? "hero"}>
-      {/* Logo */}
-      <div style={logoStyle}>K-Folio</div>
+    <>
+      {/* Responsive overrides */}
+      <style>{`
+        @media (max-width: 768px) {
+          footer {
+            grid-template-columns: 1fr !important;
+            gap: 40px;
+            padding: 40px 24px !important;
+          }
 
-      {/* Links */}
-      <div style={linksStyle}>
-        <div>
-          <h4 style={h4Style}>Explore</h4>
-          <a style={linkStyle}>Home</a>
-          <a style={linkStyle}>Stories</a>
-          <a style={linkStyle}>Profile</a>
-          <a style={linkStyle}>Create Post</a>
-          <a style={linkStyle}>Search</a>
-          <a style={linkStyle}>Messages</a>
+          /* Explore + Resources → two columns */
+          footer > div:nth-child(2) {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+          }
+
+          /* Illustration centered and moved below links naturally */
+          footer > div:nth-child(3) {
+            justify-content: center !important;
+          }
+
+          footer img {
+            width: 100% !important;
+            max-width: 360px;
+            margin: 0 auto;
+            display: block;
+          }
+        }
+      `}</style>
+
+      <footer style={footerStyle} data-active={activeSection ?? "hero"}>
+        {/* Logo */}
+        <div style={logoStyle}>K-Folio</div>
+
+        {/* Links */}
+        <div style={linksStyle}>
+          <div>
+            <h4 style={h4Style}>Explore</h4>
+            <a style={linkStyle}>Home</a>
+            <a style={linkStyle}>Stories</a>
+            <a style={linkStyle}>Profile</a>
+            <a style={linkStyle}>Create Post</a>
+            <a style={linkStyle}>Search</a>
+            <a style={linkStyle}>Messages</a>
+          </div>
+
+          <div>
+            <h4 style={h4Style}>Resources</h4>
+            <a style={linkStyle}>About K-Folio</a>
+            <a style={linkStyle}>Contact Us</a>
+            <a style={linkStyle}>Privacy and Terms</a>
+          </div>
         </div>
 
-        <div>
-          <h4 style={h4Style}>Resources</h4>
-          <a style={linkStyle}>About K-Folio</a>
-          <a style={linkStyle}>Contact Us</a>
-          <a style={linkStyle}>Privacy and Terms</a>
+        {/* Visual / Illustration */}
+        <div style={visualStyle}>
+          <img
+            src="/footer.svg"
+            alt="Footer illustration"
+            style={{
+              width: "500px",
+              maxWidth: "100%",
+              height: "auto",
+            }}
+          />
         </div>
-      </div>
-
-      {/* Visual / Illustration */}
-      <div style={visualStyle}>
-        <img
-          src="/footer.svg"
-          alt="Footer illustration"
-          style={{
-            width: "500px",
-            maxWidth: "100%",
-            height: "auto",
-          }}
-        />
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }
-
