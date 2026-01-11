@@ -1,4 +1,4 @@
-import { Search, Plus, Send, Bell, Menu, User } from "lucide-react";
+import {  Plus, Send, Bell, Menu, User } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import SearchBar from "../Homepage/search/SearchBar";

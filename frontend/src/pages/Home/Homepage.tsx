@@ -11,28 +11,39 @@ export default function Homepage() {
   const [isCreatePostOpen, setIsCreatePostOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#050b1f] text-white pt-28">
+    <div className="min-h-screen bg-[#050b1f] text-white">
 
-      {/* NAVBAR */}
+      {/* Sticky Navbar */}
       <Navbar onCreatePost={() => setIsCreatePostOpen(true)} />
 
-      <div className="max-w-7xl mx-auto px-6 py-6 flex gap-6">
+      {/* Page Content */}
+      <div className="pt-28 pb-10">
+        <div className="max-w-[1300px] mx-auto px-4 sm:px-6">
 
-        {/* MAIN FEED */}
-        <div className="flex-1 space-y-6">
+          {/* Layout */}
+          <div className="flex flex-col lg:flex-row gap-6">
 
-          {/* Stories */}
-          <StoriesBar />
+            {/* FEED COLUMN */}
+            <div className="flex-1 max-w-[820px] mx-auto lg:mx-0 space-y-6">
 
-          {/* Create Post Box */}
-          <CreatePostBox onCreatePost={() => setIsCreatePostOpen(true)} />
+              {/* Stories */}
+              <StoriesBar />
 
-          {/* Feed */}
-          <PostSection />
+              {/* Create Post */}
+              <CreatePostBox onCreatePost={() => setIsCreatePostOpen(true)} />
+
+              {/* Feed */}
+              <PostSection />
+
+            </div>
+
+            {/* SIDEBAR (Desktop Only) */}
+            <div className="hidden lg:block w-[320px] shrink-0">
+              <RightSidebar />
+            </div>
+
+          </div>
         </div>
-
-        {/* Right Sidebar */}
-        <RightSidebar />
       </div>
 
       {/* Create Post Modal */}

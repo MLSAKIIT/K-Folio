@@ -5,7 +5,7 @@ type Story = {
   id: number;
   name: string;
   avatar: string;
-  media: string; // image or video
+  media: string;
 };
 
 export default function StoriesBar() {
@@ -21,78 +21,91 @@ export default function StoriesBar() {
   const handleStoryUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
     const previewUrl = URL.createObjectURL(file);
     setMyStoryPreview(previewUrl);
   };
 
   return (
     <>
-      {/* Stories Row */}
-      <div className="flex gap-4 overflow-x-auto pb-3">
+      {/* Stories Container */}
+      <div className="bg-[#0a1335] rounded-2xl px-4 py-4 shadow-lg">
+        <div className="flex gap-5 overflow-x-auto pb-2 scrollbar-hide snap-x snap-mandatory">
 
-        {/* ➕ Add Story */}
-        <label className="flex flex-col items-center cursor-pointer">
-          <div className="w-16 h-16 rounded-full bg-[#1b2b5c] border-2 border-dashed border-blue-400 flex items-center justify-center text-2xl">
-            +
-          </div>
-          <span className="text-xs mt-1 text-gray-300">Your Story</span>
-
-          <input
-            type="file"
-            accept="image/*,video/*"
-            className="hidden"
-            onChange={handleStoryUpload}
-          />
-        </label>
-
-        {/* Your Story Preview */}
-        {myStoryPreview && (
-          <div
-            className="flex flex-col items-center cursor-pointer"
-            onClick={() =>
-              setActiveStory({
-                id: 0,
-                name: "You",
-                avatar: myStoryPreview,
-                media: myStoryPreview,
-              })
-            }
-          >
-            <div className="w-16 h-16 rounded-full border-2 border-blue-500 overflow-hidden">
-              <img src={myStoryPreview} className="w-full h-full object-cover" />
+          {/* ➕ Add Story */}
+          <label className="flex flex-col items-center cursor-pointer snap-start shrink-0">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full 
+                            bg-[#1b2b5c] border-2 border-dashed border-blue-400 
+                            flex items-center justify-center text-3xl
+                            hover:scale-105 transition">
+              +
             </div>
-            <span className="text-xs mt-1 text-blue-400">You</span>
-          </div>
-        )}
+            <span className="text-xs mt-2 text-gray-300">Your Story</span>
 
-        {/* Other Stories */}
-        {stories.map((story) => (
-          <div
-            key={story.id}
-            className="flex flex-col items-center cursor-pointer"
-            onClick={() => setActiveStory(story)}
-          >
-            <div className="w-16 h-16 rounded-full border-2 border-blue-500 p-[2px]">
-              <img
-                src={story.avatar}
-                className="w-full h-full rounded-full object-cover"
-              />
+            <input
+              type="file"
+              accept="image/*,video/*"
+              className="hidden"
+              onChange={handleStoryUpload}
+            />
+          </label>
+
+          {/* Your Story Preview */}
+          {myStoryPreview && (
+            <div
+              className="flex flex-col items-center cursor-pointer snap-start shrink-0"
+              onClick={() =>
+                setActiveStory({
+                  id: 0,
+                  name: "You",
+                  avatar: myStoryPreview,
+                  media: myStoryPreview,
+                })
+              }
+            >
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full 
+                              border-2 border-blue-500 overflow-hidden 
+                              hover:scale-105 transition">
+                <img
+                  src={myStoryPreview}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <span className="text-xs mt-2 text-blue-400">You</span>
             </div>
-            <span className="text-xs mt-1 text-gray-300">{story.name}</span>
-          </div>
-        ))}
+          )}
+
+          {/* Other Stories */}
+          {stories.map((story) => (
+            <div
+              key={story.id}
+              className="flex flex-col items-center cursor-pointer snap-start shrink-0"
+              onClick={() => setActiveStory(story)}
+            >
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full 
+                              border-2 border-blue-500 p-[2px]
+                              hover:scale-105 transition">
+                <img
+                  src={story.avatar}
+                  className="w-full h-full rounded-full object-cover"
+                />
+              </div>
+              <span className="text-xs mt-2 text-gray-300">{story.name}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Story Viewer Modal */}
       {activeStory && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center">
-          <div className="relative w-[360px] h-[640px] bg-black rounded-xl overflow-hidden">
+        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center">
+
+          <div className="relative w-full h-full sm:w-[380px] sm:h-[680px] 
+                          bg-black rounded-none sm:rounded-2xl overflow-hidden">
 
             {/* Close */}
             <button
               onClick={() => setActiveStory(null)}
-              className="absolute top-3 right-3 text-white text-xl z-50"
+              className="absolute top-4 right-4 text-white text-2xl z-50"
             >
               ✕
             </button>
@@ -113,7 +126,7 @@ export default function StoriesBar() {
             )}
 
             {/* Username */}
-            <div className="absolute bottom-4 left-4 text-white text-sm">
+            <div className="absolute top-4 left-4 text-white text-sm font-semibold">
               {activeStory.name}
             </div>
           </div>

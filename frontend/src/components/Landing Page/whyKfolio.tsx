@@ -25,8 +25,10 @@ export default function WhyKfolio() {
       <style>{`
         .why-collage {
           position: relative;
-          width: 460px;
-          height: 460px;
+          width: 100%;
+          max-width: 460px;
+          aspect-ratio: 1/1;
+          margin: 0 auto;
         }
 
         .collage-item {
@@ -61,175 +63,62 @@ export default function WhyKfolio() {
           box-shadow: 0 25px 60px rgba(96,165,250,0.45);
         }
 
-        /* Item positions */
-        .item-1 {
-          width: 130px;
-          height: 130px;
-          top: 40px;
-          left: -15px;
-          --tilt: 17deg;
-          --float-time: 6.5s;
+        /* Desktop positions */
+        .item-1 { width: 130px; height: 130px; top: 40px; left: -15px; --tilt: 17deg; --float-time: 6.5s; }
+        .item-2 { width: 300px; height: 170px; top: 0; left: 200px; --tilt: 0deg; --float-time: 7.2s; }
+        .item-3 { width: 260px; height: 330px; top: 110px; left: 120px; --tilt: 0deg; --float-time: 6.2s; z-index: 5; }
+        .item-4 { width: 190px; height: 210px; top: 330px; left: 260px; --tilt: 0deg; --float-time: 7.8s; }
+        .item-5 { width: 130px; height: 130px; bottom: -30px; left: 10px; --tilt: -9deg; --float-time: 7.5s; }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+          .why-collage { max-width: 380px; }
         }
 
-        .item-2 {
-          width: 300px;
-          height: 170px;
-          top: 0;
-          left: 200px;
-          --tilt: 0deg;
-          --float-time: 7.2s;
-        }
+        /* Mobile */
+        @media (max-width: 640px) {
+          .why-collage { max-width: 300px; }
 
-        .item-3 {
-          width: 260px;
-          height: 330px;
-          top: 110px;
-          left: 120px;
-          --tilt: 0deg;
-          --float-time: 6.2s;
-          z-index: 5;
-        }
-
-        .item-4 {
-          width: 190px;
-          height: 210px;
-          top: 330px;
-          left: 260px;
-          --tilt: 0deg;
-          --float-time: 7.8s;
-        }
-
-        .item-5 {
-          width: 130px;
-          height: 130px;
-          bottom: -30px;
-          left: 10px;
-          --tilt: -9deg;
-          --float-time: 7.5s;
+          .item-1 { width: 90px; height: 90px; }
+          .item-2 { width: 220px; height: 120px; left: 100px; }
+          .item-3 { width: 200px; height: 260px; left: 60px; top: 80px; }
+          .item-4 { width: 140px; height: 160px; left: 160px; top: 230px; }
+          .item-5 { width: 90px; height: 90px; bottom: -10px; }
         }
 
         @keyframes spin {
           to { transform: rotate(360deg); }
         }
+      `}</style>
 
-        /* =====================
-          RESPONSIVE OVERRIDES
-          ===================== */
+      <section className="min-h-screen py-24 px-6 lg:px-20 grid lg:grid-cols-2 gap-20 items-center text-white max-w-7xl mx-auto overflow-hidden">
 
-        /* Tablet */
-        @media (max-width: 1024px) {
-          section {
-            grid-template-columns: 1fr !important;
-            gap: 60px !important;
-            padding: 80px 40px !important;
-            text-align: center;
-          }
-
-          .why-collage {
-            margin: 0 auto;
-            transform: scale(0.9);
-          }
-
-          .grid.grid-cols-[auto_90px] {
-            justify-content: center;
-          }
-
-          .text-[110px] {
-            font-size: 84px !important;
-          }
-
-          .text-[95px] {
-            font-size: 72px !important;
-          }
-
-          .text-[250px] {
-            font-size: 180px !important;
-            margin-left: 0 !important;
-          }
-        }
-
-        /* Mobile */
-        @media (max-width: 640px) {
-          section {
-            padding: 60px 20px !important;
-            gap: 50px !important;
-          }
-
-          .why-collage {
-            width: 320px;
-            height: 320px;
-            transform: scale(0.85);
-          }
-
-          .text-[110px] {
-            font-size: 56px !important;
-          }
-
-          .text-[95px] {
-            font-size: 48px !important;
-          }
-
-          .text-[250px] {
-            font-size: 120px !important;
-          }
-
-          p {
-            font-size: 16px !important;
-          }
-        }
-        `}</style>
-
-
-      <section
-        style={{
-          minHeight: "100vh",
-          padding: "120px 100px",
-          display: "grid",
-          gridTemplateColumns: "auto 1fr",
-          gap: "80px",
-          alignItems: "center",
-          color: "white",
-        }}
-      >
         {/* LEFT — COLLAGE */}
         <div className="why-collage">
-          <div className="collage-item item-1">
-            <img src="/WhyKfolio3.jpg" />
-          </div>
-
-          <div className="collage-item item-2">
-            <img src="/WhyKfolio5.svg" />
-          </div>
-
-          <div className="collage-item item-3">
-            <img src="/WhyKfolio6.svg" />
-          </div>
-
-          <div className="collage-item item-4">
-            <img src="/WhyKfolio4.svg" />
-          </div>
-
-          <div className="collage-item item-5">
-            <img src="/WhyKfolio7.jpg" />
-          </div>
+          <div className="collage-item item-1"><img src="/WhyKfolio3.jpg" /></div>
+          <div className="collage-item item-2"><img src="/WhyKfolio5.svg" /></div>
+          <div className="collage-item item-3"><img src="/WhyKfolio6.svg" /></div>
+          <div className="collage-item item-4"><img src="/WhyKfolio4.svg" /></div>
+          <div className="collage-item item-5"><img src="/WhyKfolio7.jpg" /></div>
         </div>
 
         {/* RIGHT — CONTENT */}
-        <div className="max-w-[520px]">
+        <div className="max-w-xl mx-auto text-center lg:text-left">
+
           {/* Heading */}
-          <div className="grid grid-cols-[auto_90px] gap-x-4 items-center leading-none mb-6">
+          <div className="flex items-end justify-center lg:justify-start gap-4 mb-8">
             <div>
-              <div className="text-[110px] font-extrabold tracking-tight mb-[10px]">
+              <div className="text-[56px] sm:text-[80px] lg:text-[110px] font-extrabold leading-none">
                 Why
               </div>
-              <div className="text-[95px] font-extrabold text-transparent [-webkit-text-stroke:4px_white]">
+              <div className="text-[48px] sm:text-[70px] lg:text-[95px] font-extrabold text-transparent [-webkit-text-stroke:3px_white]">
                 K-Folio
               </div>
             </div>
 
             <div
               ref={questionRef}
-              className={`text-[250px] ml-[-50px] font-bold transition-transform duration-900 ${
+              className={`text-[120px] sm:text-[180px] lg:text-[250px] font-bold transition-transform duration-700 ${
                 rotateQ ? "rotate-[360deg]" : "rotate-0"
               }`}
             >
@@ -237,51 +126,22 @@ export default function WhyKfolio() {
             </div>
           </div>
 
-          <p className="text-[18px] text-white/75 leading-relaxed mb-10">
+          <p className="text-base sm:text-lg text-white/75 leading-relaxed mb-10">
             College is full of moments that never make it to social media.
             K-Folio is where those moments live. Shared easily, seen by the
             right people, and free from the noise of generic platforms.
           </p>
 
-          <button
-            style={{
-              position: "relative",
-              display: "inline-flex",
-              padding: "1px",
-              borderRadius: "999px",
-              overflow: "hidden",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
+          <button className="relative inline-flex p-[1px] rounded-full overflow-hidden">
             <span
+              className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite]"
               style={{
-                position: "absolute",
-                inset: "-1000%",
                 background:
                   "conic-gradient(from 90deg at 50% 50%, #E2CBFF, #393BB2, #E2CBFF)",
-                animation: "spin 2s linear infinite",
               }}
             />
-
-            <span
-              style={{
-                position: "relative",
-                zIndex: 1,
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "10px",
-                height: "48px",
-                padding: "0 22px",
-                borderRadius: "999px",
-                background: "#030b2d",
-                color: "white",
-                fontSize: "14px",
-                fontWeight: 500,
-              }}
-            >
-              Join Now!
-              <span>→</span>
+            <span className="relative z-10 inline-flex items-center gap-2 h-12 px-8 rounded-full bg-[#030b2d] text-white text-sm font-medium">
+              Join Now! →
             </span>
           </button>
         </div>
