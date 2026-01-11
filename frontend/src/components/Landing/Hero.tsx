@@ -1,108 +1,73 @@
 export default function Hero() {
   return (
     <>
-      {/* Animation definition */}
       <style>
         {`
           @keyframes spin {
-            to {
-              transform: rotate(360deg);
-            }
+            to { transform: rotate(360deg); }
           }
         `}
       </style>
 
-      <section
-        style={{
-          position: "relative",
-          minHeight: "80vh",
-          padding: "30px 50px",
-          display: "grid",
-          gridTemplateColumns: "1.1fr 1fr",
-          alignItems: "center",
-          overflow: "hidden",
-          color: "white",
-          background: "#030b2dff",
-        }}
-      >
-        {/* Left content */}
-        <div style={{ maxWidth: "520px" }}>
-          <h1
-            style={{
-              fontSize: "50px",
-              fontWeight: 600,
-              lineHeight: 1.15,
-              marginBottom: "24px",
-            }}
-          >
-            See what’s happening <br />
-            on campus–from <br />
-            people who live it.
-          </h1>
+      <section className="relative bg-[#030b2d] text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 py-20">
 
-          <p
-            style={{
-              fontSize: "20px",
-              opacity: 0.75,
-              marginBottom: "36px",
-              maxWidth: "420px",
-            }}
-          >
-          </p>
+          {/* GRID */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-          <button
-            style={{
-              position: "relative",
-              display: "inline-flex",
-              height: "48px",
-              padding: "1px",
-              borderRadius: "999px",
-              overflow: "hidden",
-              background: "transparent",
-              border: "none",
-              cursor: "pointer",
-            }}  
-            >
-            {/* Animated gradient border */}
-            <span
-              style={{
-                position: "absolute",
-                inset: "-1000%",
-                background:
-                  "conic-gradient(from 90deg at 50% 50%, #E2CBFF 0%, #393BB2 50%, #E2CBFF 100%)",
-                animation: "spin 2s linear infinite",
-              }}
+            {/* LEFT CONTENT */}
+            <div className="max-w-xl">
+
+              <h1 className="text-[32px] sm:text-[40px] lg:text-[52px] font-semibold leading-tight mb-6">
+                See what’s happening <br />
+                on campus — from <br />
+                people who live it.
+              </h1>
+
+              <p className="text-base sm:text-lg opacity-75 mb-10 max-w-md">
+                A social platform for students to share their experiences, stories,
+                and moments from campus life.
+              </p>
+
+              {/* CTA BUTTON */}
+              <button className="relative inline-flex h-12 p-[1px] rounded-full overflow-hidden">
+                <span
+                  className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite]"
+                  style={{
+                    background:
+                      "conic-gradient(from 90deg at 50% 50%, #E2CBFF, #393BB2, #E2CBFF)",
+                  }}
+                />
+
+                <span className="relative z-10 inline-flex items-center gap-2 h-full px-8 rounded-full bg-[#030b2d] text-white text-sm font-medium">
+                  GET STARTED →
+                </span>
+              </button>
+            </div>
+
+            {/* RIGHT MEDIA (DESKTOP ONLY) */}
+            <div className="hidden lg:flex justify-center">
+              {/* IMAGE */}
+              <img
+                src="/HeroSection.svg"
+                alt="Illustration"
+                className="w-full max-w-[560px] h-auto"
               />
 
-            {/* Inner button */}
-            <span
-              style={{
-                position: "relative",
-                zIndex: 1,
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "10px",
-                height: "100%",
-                padding: "0 22px",
-                borderRadius: "999px",
-                background: "#030b2dff",
-                color: "white",
-                fontSize: "14px",
-                fontWeight: 500,
-              }}
-              >
-              GET STARTED →
-            </span>
-          </button>
-        </div>
+              {/* If you want video instead, use this and delete image */}
+              {/*
+              <video
+                src="/hero-video.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full max-w-[560px] rounded-xl shadow-xl"
+              />
+              */}
+            </div>
 
-        {/* Right illustration */}
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <img
-            src="/HeroSection.svg"
-            alt="Illustration"
-            style={{ width: "600px", height: "350px" }}
-          />
+          </div>
         </div>
       </section>
     </>
