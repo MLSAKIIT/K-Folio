@@ -1,37 +1,50 @@
+import { Link, useNavigate } from "react-router-dom";
 import SearchBar from "../Homepage/search/SearchBar";
-import type { SearchItemData } from "../Homepage/search/types";
+import { searchUsers } from "../../api/homeApi";
 
 export default function Navbar() {
-
-  // Mock search handler (later backend will replace this)
-  const handleSearch = async (query: string): Promise<SearchItemData[]> => {
-    if (!query) return [];
-
-    // MOCK DATA (replace later with API)
-    return [
-      { id: 1, name: "Mayra S.", meta: "128k Followers" },
-      { id: 2, name: "Vihan Singh", meta: "112k Followers" },
-      { id: 3, name: "Megha Ghosh", meta: "98k Followers" },
-    ].filter(user =>
-      user.name.toLowerCase().includes(query.toLowerCase())
-    );
-  };
+  const navigate = useNavigate();
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 bg-[#070e2a]/70 backdrop-blur-xl border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <div className="w-full px-6 py-4 flex items-center justify-between
+                    bg-[#070f2d]/80 backdrop-blur-xl border-b border-white/10
+                    sticky top-0 z-50">
 
-        {/* Logo */}
-        <div className="text-lg font-semibold">K-Folio</div>
+      {/* Left Logo + Search */}
+      <div className="flex items-center gap-6">
+        <h1 className="text-xl font-semibold text-white cursor-pointer"
+            onClick={() => navigate("/home")}>
+          K-Folio
+        </h1>
 
         {/* Search */}
-        <div className="flex-1 mx-8">
-          <SearchBar onSearch={handleSearch} />
-        </div>
+        <SearchBar onSearch={searchUsers} />
+      </div>
 
-        {/* Profile */}
-        <img src="/avatars/user1.png" className="w-9 h-9 rounded-full cursor-pointer" />
+      {/* Right Actions */}
+      <div className="flex items-center gap-6">
 
+        {/* Home */}
+        <Link
+          to="/home"
+          className="text-sm text-white/80 hover:text-white transition"
+        >
+          Home
+        </Link>
+
+        {/* Profile Button */}
+        <button
+          onClick={() => navigate("/profile")}
+          className="flex items-center gap-2 px-3 py-1.5 rounded-full
+                     bg-[#0b1330] border border-white/10
+                     hover:border-blue-500 transition"
+        >
+          <img
+            src="/avatars/user1.png"
+            className="w-9 h-9 rounded-full object-cover"
+          />
+          <span className="text-sm">Profile</span>
+        </button>
       </div>
     </div>
   );

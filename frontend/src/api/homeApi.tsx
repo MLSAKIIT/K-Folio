@@ -51,3 +51,15 @@ export async function fetchFollowRequests() {
     },
   ];
 }
+
+export async function searchUsers(query: string) {
+  const users = [
+    { id: 1, name: "Mayra S.", meta: "128k Followers" },
+    { id: 2, name: "Vihan Singh", meta: "112k Followers" },
+    { id: 3, name: "Megha Ghosh", meta: "98k Followers" },
+  ];
+
+  return users.filter(user =>
+    user.name.toLowerCase().includes(query.toLowerCase())
+  );
+}
