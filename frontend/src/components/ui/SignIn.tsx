@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ShineBorder } from "@/components/ui/shine-border";
 
 type SignInProps = {
-  onSwitch: () => void;
+  onSwitch?: () => void;
 };
 
 const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
@@ -10,9 +10,8 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!email.trim() || !password.trim()) {
@@ -21,50 +20,26 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
     }
 
     setError("");
-    setLoading(true);
-
-    try {
-      const response = await fetch("http://localhost:5000/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || "Login failed");
-      }
-
-      localStorage.setItem("token", data.token);
-      
-      console.log("Logged in successfully, token:", data.token);
-      alert("Login Successful!"); 
-
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
+    console.log({ email, password });
   };
 
   return (
-    <div className="relative min-h-screen w-full bg-black flex items-center">
+    <div className="fixed inset-0 w-screen h-screen bg-[#050b1f] bg-[url('/topo-bg.svg')] bg-cover bg-center flex items-center justify-center px-4">
 
-      {/* LOGIN CARD */}
-      <div className="relative z-10 w-95 ml-20 rounded-2xl bg-[#524C90]/30 backdrop-blur-xl p-8 text-white">
+      {/* Login Card */}
+      <div className="relative w-full max-w-md rounded-2xl bg-[#524C90]/30 backdrop-blur-xl p-6 sm:p-8 text-white shadow-2xl">
+
         <ShineBorder shineColor={["#2F5BFF", "white"]} />
 
+        {/* Switch Tabs */}
         <div className="flex mb-6 bg-black/30 rounded-lg p-1">
           <button className="flex-1 py-2 rounded-md bg-[#2F5BFF] text-sm font-medium transition hover:-translate-y-px">
             Log In
           </button>
-          <button type="button" onClick={onSwitch} className="flex-1 py-2 rounded-md text-sm text-gray-400 transition hover:-translate-y-px">
+          <button
+            className="flex-1 py-2 rounded-md text-sm text-gray-400 transition hover:-translate-y-px"
+            onClick={() => onSwitch?.()}
+          >
             Sign Up
           </button>
         </div>
@@ -82,12 +57,11 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
           )}
 
           <div>
-            <label className="text-sm text-gray-300">Email Address</label>
+            <label className="text-sm text-gray-300">Username or Email</label>
             <input
-              type="email"
+              type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="example@address.com"
               className="mt-1 w-full rounded-md bg-black/40 border border-white/20 px-3 py-2 outline-none focus:border-[#2F5BFF]"
             />
           </div>
@@ -120,97 +94,11 @@ const LoginPage: React.FC<SignInProps> = ({ onSwitch }) => {
 
           <button
             type="submit"
-            disabled={loading}
-            className="w-full mt-2 bg-[#2F5BFF] transition cursor-pointer hover:-translate-y-px rounded-md py-2 font-medium disabled:opacity-50"
+            className="w-full mt-2 bg-[#2F5BFF] transition cursor-pointer hover:-translate-y-px rounded-md py-2 font-medium"
           >
-            {loading ? "Logging in..." : "Log In"}
+            Log In
           </button>
         </form>
-        <div className="mt-6 flex items-center gap-3">
-          {/* Left line */}
-          <div className="flex-1">
-            <svg
-              className="w-full"
-              height="2"
-              viewBox="0 0 145 2"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line
-                y1="1"
-                x2="145"
-                y2="1"
-                stroke="white"
-                strokeOpacity="0.63"
-                strokeWidth="1.2"
-              />
-            </svg>
-          </div>
-
-          {/* Text */}
-          <span className="text-sm text-gray-400 whitespace-nowrap">
-            Or continue with
-          </span>
-
-          {/* Right line */}
-          <div className="flex-1">
-            <svg
-              className="w-full"
-              height="2"
-              viewBox="0 0 145 2"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line
-                y1="1"
-                x2="145"
-                y2="1"
-                stroke="white"
-                strokeOpacity="0.63"
-                strokeWidth="1.2"
-              />
-            </svg>
-          </div>
-        </div>
-
-
-        {/* SOCIAL BUTTONS */}
-        <div className="mt-4 flex gap-3">
-          {/* GOOGLE */}
-          <button className="flex flex-1 items-center justify-center gap-2 rounded-md bg-black/40 border border-white/20 py-2 text-sm transition hover:-translate-y-px hover:border-[#2F5BFF] hover:shadow-[0_0_16px_rgba(47,91,255,0.5)]">
-            <svg
-              width="14"
-              height="15"
-              viewBox="0 0 14 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.7168 5.7429C13.8051 6.21609 13.8532 6.71082 13.8532 7.22709C13.8532 11.2654 11.1505 14.1368 7.06841 14.1368C6.14007 14.1372 5.22075 13.9546 4.363 13.5995C3.50525 13.2444 2.72588 12.7238 2.06945 12.0674C1.41301 11.4109 0.892369 10.6316 0.537282 9.77382C0.182195 8.91607 -0.000376868 7.99675 5.84065e-07 7.06841C-0.000376868 6.14006 0.182195 5.22075 0.537282 4.363C0.892369 3.50525 1.41301 2.72588 2.06945 2.06945C2.72588 1.41301 3.50525 0.892369 4.363 0.537282C5.22075 0.182195 6.14007 -0.000376868 7.06841 5.84065e-07C8.97696 5.84065e-07 10.5717 0.702246 11.7953 1.8425L9.80271 3.83506C9.06098 3.12348 8.11962 2.76087 7.06841 2.76087C4.73621 2.76087 2.84058 4.73118 2.84058 7.0641C2.84058 9.39702 4.73621 11.3716 7.06841 11.3716C9.18448 11.3716 10.6249 10.161 10.9207 8.49946H7.06841V5.7429H13.7168Z"
-                fill="#2F5BFF"
-              />
-            </svg>
-            <span>Google</span>
-          </button>
-
-          {/* FACEBOOK */}
-          <button className="flex flex-1 items-center justify-center gap-2 rounded-md bg-black/40 border border-white/20 py-2 text-sm transition hover:-translate-y-px hover:border-[#2F5BFF] hover:shadow-[0_0_16px_rgba(47,91,255,0.5)]">
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.8532 6.92659C13.8532 3.10311 10.7501 0 6.92659 0C3.10311 0 0 3.10311 0 6.92659C0 10.2791 2.38275 13.0705 5.54128 13.7147V9.00457H4.15596V6.92659H5.54128V5.19495C5.54128 3.85811 6.62875 2.77064 7.96558 2.77064H9.69723V4.84862H8.31191C7.93095 4.84862 7.61925 5.16031 7.61925 5.54128V6.92659H9.69723V9.00457H7.61925V13.8186C11.1172 13.4722 13.8532 10.5215 13.8532 6.92659Z"
-                fill="#2F5BFF"
-              />
-            </svg>
-            <span>Facebook</span>
-          </button>
-        </div>
-
       </div>
     </div>
   );
