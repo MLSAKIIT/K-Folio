@@ -143,3 +143,18 @@
     transform: translateY(0);
   }
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+#root {
+  overflow-x: hidden;
+}
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  background: #050b1f;
+}
+
